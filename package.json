@@ -11,24 +11,34 @@
     "pack": "npx framer-plugin-tools@latest pack"
   },
   "dependencies": {
+    "@radix-ui/react-slot": "^1.2.3",
+    "@tailwindcss/vite": "^4.1.7",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
     "framer-plugin": "^3",
+    "lucide-react": "^0.511.0",
     "react": "^18",
     "react-dom": "^18",
+    "react-router-dom": "^7.6.0",
+    "tailwind-merge": "^3.3.0",
+    "tailwindcss": "^4.1.7",
     "vite-plugin-mkcert": "^1"
   },
   "devDependencies": {
     "@eslint/js": "^9",
-    "@types/react-dom": "^18",
+    "@types/node": "^22.15.21",
     "@types/react": "^18",
-    "@vitejs/plugin-react-swc": "^3",
+    "@types/react-dom": "^18",
     "@vitejs/plugin-react": "^4.3.1",
+    "@vitejs/plugin-react-swc": "^3",
+    "eslint": "^9.9.0",
     "eslint-plugin-react-hooks": "^5.1.0",
     "eslint-plugin-react-refresh": "^0.4.9",
-    "typescript-eslint": "^8.0.1",
-    "vite-plugin-framer": "^1",
-    "eslint": "^9.9.0",
     "globals": "^15.9.0",
+    "tw-animate-css": "^1.3.0",
     "typescript": "^5.3",
-    "vite": "^6"
+    "typescript-eslint": "^8.0.1",
+    "vite": "^6",
+    "vite-plugin-framer": "^1"
   }
 }

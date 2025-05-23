@@ -1,6 +1,7 @@
-# Framer Plugin Template
+# Framer Editor
 
-This is a template for using the Framer Plugin API in a TypeScript project.
+This is an all-in-one Framer Plugin for creating custom designs as fast as possible.
+It includes a set of components, utilities, and tools to help you create beautiful designs quickly and easily.
 
 ## Quickstart
 
@@ -17,3 +18,9 @@ bun dev
 ```
 
 Learn more: https://www.framer.com/developers/plugins/introduction
+
+## Dependencies
+
+- [@framer/cli](https://www.framer.com/developers/plugins-introduction) - The Framer CLI is a command line tool that allows you to create and manage Framer projects.
+- [@tailwindcss/vite](https://tailwindcss.com/docs/installation/using-vite) - A utility-first CSS framework for creating custom designs.
+- [@shadcn](https://ui.shadcn.com/) - A set of components and utilities for building custom designs.
