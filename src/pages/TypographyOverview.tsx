@@ -1,4 +1,4 @@
 const TypographyOverview = () => {
-    return <div>TypographyOverview</div>;
+  return <div>TypographyOverview</div>;
 };
 export default TypographyOverview;

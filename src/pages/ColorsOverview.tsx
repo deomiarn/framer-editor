@@ -1,4 +1,4 @@
 const ColorsOverview = () => {
-    return <div>ColorsOverview</div>;
+  return <div>ColorsOverview</div>;
 };
 export default ColorsOverview;

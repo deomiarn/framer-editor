@@ -1,8 +1,6 @@
 {
   "id": "f35656",
   "name": "Framer Editor",
-  "modes": [
-    "canvas"
-  ],
+  "modes": ["canvas"],
   "icon": "/icon.svg"
 }
