@@ -1,11 +1,15 @@
 import { Outlet } from "react-router-dom";
-import Header from "@/components/Header.tsx";
+import Header from "@/components/navigation/Header.tsx";
+import { Footer } from "@/components/navigation/Footer.tsx";
 
 const Layout = () => {
   return (
-    <div className="w-full">
-      <Header></Header>
-      <Outlet />
+    <div className="min-h-screen flex flex-col bg-gradient-to-b from-muted/30 to-background">
+      <Header />
+      <main className="flex-1">
+        <Outlet />
+      </main>
+      <Footer />
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import { ArrowLeft, Search, Smile } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button.tsx";
 
 export default function Header() {
   return (
