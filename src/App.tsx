@@ -16,7 +16,7 @@ framer.showUI({
 
 export function App() {
   return (
-    <main>
+    <main className="flex flex-col h-full px-2 pb-2 gap-4">
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout />}>
