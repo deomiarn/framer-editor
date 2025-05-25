@@ -10,9 +10,16 @@ import {
 } from "lucide-react";
 import { NavigationDivider } from "@/components/navigation/NavigationDivider.tsx";
 import { useSmartNavigate } from "@/hooks/useSmartNavigate.ts";
+import { useHeaderTitle } from "@/contexts/headerTitle/useHeaderTitle.ts";
+import { useEffect } from "react";
 
 const Home = () => {
   const navigate = useSmartNavigate();
+  const { setTitle } = useHeaderTitle();
+
+  useEffect(() => {
+    setTitle("Home");
+  }, [setTitle]);
 
   return (
     <div className="flex w-full flex-col gap-1 p-2">
