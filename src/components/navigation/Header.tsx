@@ -1,16 +1,14 @@
 import { ArrowLeft, Search, Smile } from "lucide-react";
 import { Button } from "@/components/ui/button.tsx";
+import { useSmartBack } from "@/hooks/useSmartBack.ts";
 
 export default function Header() {
+  const goBack = useSmartBack();
+
   return (
     <header className="flex items-center justify-between py-3 w-full border-b">
       <div className="flex items-center gap-3">
-        <Button
-          variant="ghost"
-          size="icon"
-          className="cursor-pointer"
-          onClick={() => window.history.back()}
-        >
+        <Button variant="ghost" size="icon" className="cursor-pointer" onClick={goBack}>
           <ArrowLeft className="h-5 w-5" />
         </Button>
         <h1 className="text-lg font-semibold">Framer Plugin</h1>

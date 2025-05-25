@@ -4,7 +4,7 @@ import { Footer } from "@/components/navigation/Footer.tsx";
 
 const Layout = () => {
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-b from-muted/30 to-background">
+    <div className="min-h-screen flex flex-col">
       <Header />
       <main className="flex-1">
         <Outlet />
