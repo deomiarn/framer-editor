@@ -8,12 +8,12 @@ type NavigationItemProps = {
   onClick?: () => void;
 };
 
-export function NavigationItem({ icon, label, onClick }: NavigationItemProps) {
+export function NavigationCard({ icon, label, onClick }: NavigationItemProps) {
   return (
     <button
       onClick={onClick}
       className={cn(
-        "group flex items-center w-full text-left p-3 rounded-lg transition-colors cursor-pointer",
+        "group flex items-center w-full text-left px-3 py-4 rounded-lg transition-colors cursor-pointer",
         "hover:bg-primary-foreground"
       )}
     >

@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
-import Header from "@/components/navigation/Header";
-import { Footer } from "@/components/navigation/Footer";
+import Header from "@/layout/Header.tsx";
+import { Footer } from "@/layout/Footer.tsx";
 import { HeaderTitleProvider } from "@/contexts/headerTitle/HeaderTitleProvider.tsx";
 
 const Layout = () => {
@@ -8,7 +8,7 @@ const Layout = () => {
     <HeaderTitleProvider>
       <div className="min-h-screen flex flex-col relative">
         <Header />
-        <main className="flex-1 overflow-auto py-20">
+        <main className="flex-1 overflow-auto py-20 p-2">
           <Outlet />
         </main>
         <Footer />

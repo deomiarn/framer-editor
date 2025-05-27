@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button.tsx";
 import { GithubIcon, TwitterIcon } from "lucide-react";
 import { ExternalLink } from "@/components/util/ExternalLink.tsx";
 

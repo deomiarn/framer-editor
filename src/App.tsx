@@ -5,7 +5,7 @@ import ComponentsOverview from "@/pages/ComponentsOverview.tsx";
 import ColorsOverview from "@/pages/ColorsOverview.tsx";
 import TypographyOverview from "@/pages/TypographyOverview.tsx";
 import Home from "@/pages/Home.tsx";
-import Layout from "@/pages/Layout.tsx";
+import Layout from "@/layout/Layout.tsx";
 import SectionsOverview from "./pages/SectionsOverview";
 
 framer.showUI({
@@ -17,7 +17,7 @@ framer.showUI({
 
 export function App() {
   return (
-    <main className="flex flex-col h-full px-2 pb-2 gap-4">
+    <main>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout />}>

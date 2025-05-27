@@ -1,4 +1,4 @@
-import { NavigationItem } from "@/components/navigation/NavigationItem";
+import { NavigationCard } from "@/components/navigation/NavigationCard.tsx";
 import {
   BlocksIcon,
   BoxIcon,
@@ -22,47 +22,47 @@ const Home = () => {
   }, [setTitle]);
 
   return (
-    <div className="flex w-full flex-col gap-1 p-2">
+    <div className="flex w-full flex-col gap-1">
       <NavigationDivider label="Explore" />
-      <NavigationItem
+      <NavigationCard
         icon={<BoxIcon />}
         label="Sections"
         onClick={() => navigate("/sections", "/")}
       />
-      <NavigationItem
+      <NavigationCard
         icon={<BlocksIcon />}
         label="Components"
         onClick={() => navigate("/components", "/")}
       />
-      <NavigationItem
+      <NavigationCard
         icon={<TypeIcon />}
         label="Typography"
         onClick={() => navigate("/typography", "/")}
       />
-      <NavigationItem
+      <NavigationCard
         icon={<PaletteIcon />}
         label="Colors"
         onClick={() => navigate("/colors", "/")}
       />
-      <NavigationItem icon={<DatabaseIcon />} label="CMS" onClick={() => navigate("/cms", "/")} />
+      <NavigationCard icon={<DatabaseIcon />} label="CMS" onClick={() => navigate("/cms", "/")} />
 
       <NavigationDivider label="Generate" />
-      <NavigationItem
+      <NavigationCard
         icon={<FilePenIcon />}
         label="Page AI"
         onClick={() => navigate("/page-gen", "/")}
       />
-      <NavigationItem
+      <NavigationCard
         icon={<FileType2Icon />}
         label="Context AI"
         onClick={() => navigate("/typography-gen", "/")}
       />
-      <NavigationItem
+      <NavigationCard
         icon={<FileType2Icon />}
         label="Context AI"
         onClick={() => navigate("/typography-gen", "/")}
       />
-      <NavigationItem
+      <NavigationCard
         icon={<FileType2Icon />}
         label="Context AI"
         onClick={() => navigate("/typography-gen", "/")}

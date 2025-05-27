@@ -8,5 +8,5 @@ export default function SectionsOverview() {
     setTitle("Sections");
   }, [setTitle]);
 
-  return <div>SectionsOverview</div>;
+  return <div className="space-y-2">{/*TODO: Implement Sections Overview*/}</div>;
 }
