@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button.tsx";
 import { GithubIcon, TwitterIcon } from "lucide-react";
-import { ExternalLink } from "@/components/util/ExternalLink.tsx";
+import { ExternalLink } from "@/components/common/ExternalLink.tsx";
 
 export function Footer() {
   return (
