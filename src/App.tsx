@@ -7,6 +7,7 @@ import TypographyOverview from "@/pages/TypographyOverview.tsx";
 import Home from "@/pages/Home.tsx";
 import Layout from "@/layout/Layout.tsx";
 import SectionsOverview from "./pages/SectionsOverview";
+import RegisterPage from "@/pages/auth/RegisterPage.tsx";
 
 framer.showUI({
   position: "top left",
@@ -20,8 +21,10 @@ export function App() {
     <main>
       <BrowserRouter>
         <Routes>
+          <Route index element={<RegisterPage />} />
+
           <Route path="/" element={<Layout />}>
-            <Route index element={<Home />} />
+            <Route path="home" element={<Home />} />
             <Route path="sections" element={<SectionsOverview />} />
             <Route path="components" element={<ComponentsOverview />} />
             <Route path="typography" element={<TypographyOverview />} />
