@@ -1,13 +1,24 @@
-import { Form, useForm } from "react-hook-form";
-import { AuthSchema, authSchema } from "@/lib/schemas/authSchema.ts";
+import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form.tsx";
-import { Button } from "@/components/ui/button.tsx";
+import { z } from "zod";
 import { useState } from "react";
-import { supabase } from "@/lib/supabase/client";
-import { Input } from "@/components/ui/input.tsx";
 
-export default function RegisterForm() {
+import { authSchema, AuthSchema } from "@/lib/schemas/authSchema";
+import { supabase } from "@/lib/supabase/client";
+
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage
+} from "@/components/ui/form";
+
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+
+export function RegisterForm() {
   const [message, setMessage] = useState("");
 
   const form = useForm<AuthSchema>({
@@ -18,20 +29,17 @@ export default function RegisterForm() {
     }
   });
 
-  const onSubmit = async (values: AuthSchema) => {
-    const { error } = await supabase.auth.signUp({
-      email: values.email,
-      password: values.password
-    });
-
+  const onSubmit = async (values: z.infer<typeof authSchema>) => {
+    const { error } = await supabase.auth.signUp(values);
     setMessage(error ? error.message : "✅ Bitte bestätige deine E-Mail.");
   };
 
   return (
-    <div className="w-full max-w-md mx-auto px-4">
-      <h1 className="text-2xl font-semibold mb-6 text-center">Registrieren</h1>
+    <div className="w-full max-w-sm mx-auto space-y-6">
+      <h1 className="text-2xl font-semibold text-center">Konto erstellen</h1>
+
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
           <FormField
             control={form.control}
             name="email"
@@ -58,12 +66,19 @@ export default function RegisterForm() {
               </FormItem>
             )}
           />
-          <Button type="submit" className="w-full">
+          <Button type="submit" className="w-full py-5">
             Registrieren
           </Button>
           {message && <p className="text-sm text-center text-muted-foreground">{message}</p>}
         </form>
       </Form>
+
+      <div className="text-sm text-center text-muted-foreground">
+        Bereits registriert?{" "}
+        <a href="/login" className="underline underline-offset-4 hover:text-primary">
+          Jetzt einloggen
+        </a>
+      </div>
     </div>
   );
 }
