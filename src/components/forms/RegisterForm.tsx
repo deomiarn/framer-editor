@@ -18,7 +18,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
-export function RegisterForm() {
+export default function RegisterForm() {
   const [message, setMessage] = useState("");
 
   const form = useForm<AuthSchema>({
