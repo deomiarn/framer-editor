@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useSmartNavigate } from "@/hooks/useSmartNavigate";
 
 import { authSchema, AuthSchema } from "@/lib/schemas/authSchema";
 import { supabase } from "@/lib/supabase/client";
@@ -19,7 +20,8 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
 export function LoginForm() {
-  const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
+  const navigate = useSmartNavigate();
 
   const form = useForm<AuthSchema>({
     resolver: zodResolver(authSchema),
@@ -30,8 +32,15 @@ export function LoginForm() {
   });
 
   const onSubmit = async (values: AuthSchema) => {
+    setLoading(true);
     const { error } = await supabase.auth.signInWithPassword(values);
-    setMessage(error ? error.message : "✅ Login successful!");
+    setLoading(false);
+
+    if (error) {
+      form.setError("email", { message: error.message });
+    } else {
+      navigate("/home");
+    }
   };
 
   return (
@@ -66,10 +75,9 @@ export function LoginForm() {
               </FormItem>
             )}
           />
-          <Button type="submit" className="w-full py-5">
+          <Button isLoading={loading} type="submit" className="w-full py-5">
             Login
           </Button>
-          {message && <p className="text-sm text-center text-muted-foreground">{message}</p>}
         </form>
       </Form>
 
