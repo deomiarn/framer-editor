@@ -17,10 +17,11 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { useSmartNavigate } from "@/hooks/useSmartNavigate.ts";
+import { supabase } from "@/lib/supabase/client.ts";
 
 export default function RegisterForm() {
   const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState("");
+  const [message] = useState("");
   const navigate = useSmartNavigate();
 
   const form = useForm<AuthSchema>({
@@ -34,21 +35,14 @@ export default function RegisterForm() {
   const onSubmit = async (values: AuthSchema) => {
     setLoading(true);
 
-    // const { error } = await supabase.auth.signUp({
-    //   email: values.email,
-    //   password: values.password,
-    //   options: {
-    //     emailRedirectTo: `${window.location.origin}/auth/verify-email`
-    //   }
-    // });
-
-    // setLoading(false);
-
-    // if (error) {
-    //   form.setError("email", { message: error.message });
-    // } else {
-    //   navigate("/auth/verify-email");
-    // }
+    await supabase.auth
+      .signUp({
+        email: values.email,
+        password: values.password
+      })
+      .then(() => setLoading(false))
+      .then(() => navigate("/auth/verify-email"))
+      .catch((error) => form.setError("email", { message: error.message }));
   };
 
   return (
@@ -92,7 +86,7 @@ export default function RegisterForm() {
 
       <div className="text-sm text-center text-muted-foreground">
         Already have an account?{" "}
-        <Link to="/login" className="text-primary hover:underline">
+        <Link to="/" className="text-primary hover:underline">
           Log in
         </Link>
       </div>
