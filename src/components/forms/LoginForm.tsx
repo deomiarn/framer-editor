@@ -1,8 +1,9 @@
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useState } from "react";
 
 import { authSchema, AuthSchema } from "@/lib/schemas/authSchema";
+import { supabase } from "@/lib/supabase/client";
 
 import {
   Form,
@@ -16,12 +17,9 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { useSmartNavigate } from "@/hooks/useSmartNavigate.ts";
 
-export default function RegisterForm() {
-  const [loading, setLoading] = useState(false);
+export function LoginForm() {
   const [message, setMessage] = useState("");
-  const navigate = useSmartNavigate();
 
   const form = useForm<AuthSchema>({
     resolver: zodResolver(authSchema),
@@ -32,28 +30,13 @@ export default function RegisterForm() {
   });
 
   const onSubmit = async (values: AuthSchema) => {
-    setLoading(true);
-
-    // const { error } = await supabase.auth.signUp({
-    //   email: values.email,
-    //   password: values.password,
-    //   options: {
-    //     emailRedirectTo: `${window.location.origin}/auth/verify-email`
-    //   }
-    // });
-
-    // setLoading(false);
-
-    // if (error) {
-    //   form.setError("email", { message: error.message });
-    // } else {
-    //   navigate("/auth/verify-email");
-    // }
+    const { error } = await supabase.auth.signInWithPassword(values);
+    setMessage(error ? error.message : "✅ Login successful!");
   };
 
   return (
     <div className="w-full max-w-sm mx-auto space-y-6">
-      <h1 className="text-2xl font-semibold text-center">Create Account</h1>
+      <h1 className="text-2xl font-semibold text-center">Login</h1>
 
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
@@ -83,17 +66,17 @@ export default function RegisterForm() {
               </FormItem>
             )}
           />
-          <Button isLoading={loading} type="submit" className="w-full py-5">
-            Register
+          <Button type="submit" className="w-full py-5">
+            Login
           </Button>
           {message && <p className="text-sm text-center text-muted-foreground">{message}</p>}
         </form>
       </Form>
 
       <div className="text-sm text-center text-muted-foreground">
-        Already have an account?{" "}
-        <Link to="/login" className="text-primary hover:underline">
-          Log in
+        No account yet?{" "}
+        <Link to="/auth/register" className="underline underline-offset-4 hover:text-primary">
+          Register now
         </Link>
       </div>
     </div>
