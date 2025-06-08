@@ -8,6 +8,8 @@ import Home from "@/pages/Home.tsx";
 import Layout from "@/layout/Layout.tsx";
 import SectionsOverview from "./pages/SectionsOverview";
 import RegisterPage from "@/pages/auth/RegisterPage.tsx";
+import LoginPage from "@/pages/auth/LoginPage.tsx";
+import VerifyEmailPage from "@/pages/auth/VerifyEmailPage.tsx";
 
 framer.showUI({
   position: "top left",
@@ -21,7 +23,12 @@ export function App() {
     <main>
       <BrowserRouter>
         <Routes>
-          <Route index element={<RegisterPage />} />
+          <Route path="/auth">
+            <Route path="verify-email" element={<VerifyEmailPage />} />
+            <Route path="register" element={<RegisterPage />} />
+          </Route>
+
+          <Route index element={<LoginPage />} />
 
           <Route path="/" element={<Layout />}>
             <Route path="home" element={<Home />} />
