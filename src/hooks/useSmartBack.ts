@@ -6,10 +6,14 @@ export function useSmartBack() {
 
   return () => {
     const from = location.state?.from;
+    const current = location.pathname;
+
+    if (current === "/home") return;
+
     if (from) {
-      navigate(`${from}`);
+      navigate(from);
     } else {
-      navigate(-1); // fallback, normal back navigation
+      navigate(-1);
     }
   };
 }
