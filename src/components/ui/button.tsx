@@ -55,8 +55,10 @@ function Button({
       disabled={isLoading || props.disabled}
       {...props}
     >
-      {isLoading && <Loader2Icon className="animate-spin size-4" />}
-      {children}
+      <div className="flex gap-2">
+        {isLoading && <Loader2Icon className="animate-spin size-4" />}
+        {children}
+      </div>
     </Comp>
   );
 }
