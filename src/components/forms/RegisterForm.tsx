@@ -32,16 +32,19 @@ export default function RegisterForm() {
     }
   });
 
-  const onSubmit = async (values: AuthSchema) => {
+  const registerUser = async (values: AuthSchema) => {
     setLoading(true);
 
     await supabase.auth
       .signUp({
         email: values.email,
-        password: values.password
+        password: values.password,
+        options: {
+          emailRedirectTo: `${window.location.origin}/auth/verify-email`
+        }
       })
       .then(() => setLoading(false))
-      .then(() => navigate("/auth/verify-email"))
+      .then(() => navigate("/auth/verify-email", "/register"))
       .catch((error) => form.setError("email", { message: error.message }));
   };
 
@@ -50,7 +53,7 @@ export default function RegisterForm() {
       <h1 className="text-2xl font-semibold text-center">Create Account</h1>
 
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+        <form onSubmit={form.handleSubmit(registerUser)} className="space-y-4">
           <FormField
             control={form.control}
             name="email"
