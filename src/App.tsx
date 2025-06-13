@@ -23,12 +23,12 @@ export function App() {
     <main>
       <BrowserRouter>
         <Routes>
+          <Route index element={<LoginPage />} />
+
           <Route path="/auth">
             <Route path="verify-email" element={<VerifyEmailPage />} />
             <Route path="register" element={<RegisterPage />} />
           </Route>
-
-          <Route index element={<LoginPage />} />
 
           <Route path="/" element={<Layout />}>
             <Route path="home" element={<Home />} />
