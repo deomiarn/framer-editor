@@ -19,11 +19,7 @@ framer.showUI({
 
 export function App() {
   return (
-    <main
-      className="
-        flex flex-col bg-gradient-to-br from-[#3a5876] via-[#3e6a8f] to-[#447aa8] text-white
-      "
-    >
+    <main className="flex flex-col bg-gradient-to-br from-[#3a5876] via-[#3e6a8f] to-[#447aa8] text-white">
       <BrowserRouter>
         <Routes>
           {/*<Route index element={<LoginPage />} />*/}
