@@ -6,9 +6,8 @@ import ColorsOverview from "@/pages/ColorsOverview.tsx";
 import TypographyOverview from "@/pages/TypographyOverview.tsx";
 import Home from "@/pages/Home.tsx";
 import Layout from "@/layout/Layout.tsx";
-import SectionsOverview from "./pages/SectionsOverview";
+import { SectionsOverview } from "./pages/SectionsOverview";
 import RegisterPage from "@/pages/auth/RegisterPage.tsx";
-import LoginPage from "@/pages/auth/LoginPage.tsx";
 import VerifyEmailPage from "@/pages/auth/VerifyEmailPage.tsx";
 
 framer.showUI({
@@ -20,10 +19,14 @@ framer.showUI({
 
 export function App() {
   return (
-    <main>
+    <main
+      className="
+        flex flex-col bg-gradient-to-br from-[#3a5876] via-[#3e6a8f] to-[#447aa8] text-white
+      "
+    >
       <BrowserRouter>
         <Routes>
-          <Route index element={<LoginPage />} />
+          {/*<Route index element={<LoginPage />} />*/}
 
           <Route path="/auth">
             <Route path="verify-email" element={<VerifyEmailPage />} />
@@ -31,7 +34,7 @@ export function App() {
           </Route>
 
           <Route path="/" element={<Layout />}>
-            <Route path="home" element={<Home />} />
+            <Route index element={<Home />} />
             <Route path="sections" element={<SectionsOverview />} />
             <Route path="components" element={<ComponentsOverview />} />
             <Route path="typography" element={<TypographyOverview />} />

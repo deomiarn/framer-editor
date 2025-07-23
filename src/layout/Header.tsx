@@ -1,30 +1,21 @@
-import { ArrowLeft, Search, Smile } from "lucide-react";
-import { Button } from "@/components/ui/button.tsx";
-import { useSmartBack } from "@/hooks/useSmartBack.ts";
-import { useHeaderTitle } from "@/contexts/headerTitle/useHeaderTitle.ts";
+import { Input } from "@/components/ui/input";
+import { Search } from "lucide-react";
 
-export default function Header() {
-  const goBack = useSmartBack();
-  const { title } = useHeaderTitle();
-
+export function Header() {
   return (
-    <header className="fixed top-0 left-0 w-full border-t px-4 py-4 shadow-sm z-50 bg-white">
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <Button variant="ghost" size="icon" className="cursor-pointer" onClick={goBack}>
-            <ArrowLeft className="h-5 w-5" />
-          </Button>
-          <h1 className="text-lg font-semibold">{title}</h1>
-        </div>
-        <div className="flex items-center gap-2">
-          <Button variant="ghost" size="icon" className="cursor-pointer">
-            <Search className="h-5 w-5" />
-          </Button>
-          <Button variant="ghost" size="icon" className="cursor-pointer">
-            <Smile className="h-5 w-5" />
-          </Button>
-        </div>
-      </div>
-    </header>
+    <label className="relative h-9 w-full">
+      <Input
+        type="search"
+        placeholder="Search…"
+        className="
+          h-full w-full rounded-[20px] bg-white/5
+          backdrop-blur ring-1 ring-white/10
+          placeholder:text-white/60 text-sm text-white
+          pl-9
+          focus:ring-2 focus:ring-white/20
+        "
+      />
+      <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-white/70 pointer-events-none" />
+    </label>
   );
 }
