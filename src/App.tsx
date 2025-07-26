@@ -19,25 +19,35 @@ framer.showUI({
 
 export function App() {
   return (
-    <main className="flex flex-col bg-gradient-to-br from-[#3a5876] via-[#3e6a8f] to-[#447aa8] text-white">
-      <BrowserRouter>
-        <Routes>
-          {/*<Route index element={<LoginPage />} />*/}
+    <>
+      <div
+        className="
+    fixed inset-0 -z-10
+    bg-gradient-to-br
+    from-[#b1c8db] via-[#7fa5c7] to-[#3f729f]
+    bg-fixed
+  "
+      />
 
-          <Route path="/auth">
-            <Route path="verify-email" element={<VerifyEmailPage />} />
-            <Route path="register" element={<RegisterPage />} />
-          </Route>
+      {/* eigentliche App-Shell */}
+      <main className="relative flex flex-col min-h-screen text-white">
+        <BrowserRouter>
+          <Routes>
+            <Route path="/auth">
+              <Route path="verify-email" element={<VerifyEmailPage />} />
+              <Route path="register" element={<RegisterPage />} />
+            </Route>
 
-          <Route path="/" element={<Layout />}>
-            <Route index element={<Home />} />
-            <Route path="sections" element={<SectionsOverview />} />
-            <Route path="components" element={<ComponentsOverview />} />
-            <Route path="typography" element={<TypographyOverview />} />
-            <Route path="colors" element={<ColorsOverview />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </main>
+            <Route path="/" element={<Layout />}>
+              <Route index element={<Home />} />
+              <Route path="sections" element={<SectionsOverview />} />
+              <Route path="components" element={<ComponentsOverview />} />
+              <Route path="typography" element={<TypographyOverview />} />
+              <Route path="colors" element={<ColorsOverview />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </main>
+    </>
   );
 }

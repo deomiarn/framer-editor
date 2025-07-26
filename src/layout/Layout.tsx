@@ -8,7 +8,7 @@ const Layout = () => {
     <HeaderTitleProvider>
       <div className="min-h-screen flex flex-col relative p-4 gap-4">
         <Header />
-        <main className="flex-1 overflow-auto py-20 p-2">
+        <main className="flex-1 overflow-auto">
           <Outlet />
         </main>
         <Footer />

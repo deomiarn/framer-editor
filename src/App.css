@@ -52,7 +52,7 @@
     --popover-foreground: var(--foreground);
     --primary: oklch(0.78 0.14 250);
     --primary-foreground: oklch(1 0 89.876);
-    --secondary: rgba(255, 255, 255, 0.08);
+    --secondary: rgba(255, 255, 255, 0.15);
     --secondary-foreground: oklch(1 0 89.876);
     --muted: rgba(255, 255, 255, 0.08);
     --muted-foreground: rgba(255, 255, 255, 0.6);

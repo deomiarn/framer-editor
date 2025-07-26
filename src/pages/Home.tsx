@@ -1,4 +1,3 @@
-import { NavigationCard } from "@/components/navigation/NavigationCard.tsx";
 import {
   BlocksIcon,
   BoxIcon,
@@ -8,67 +7,39 @@ import {
   PaletteIcon,
   TypeIcon
 } from "lucide-react";
-import { NavigationDivider } from "@/components/navigation/NavigationDivider.tsx";
-import { useSmartNavigate } from "@/hooks/useSmartNavigate.ts";
-import { useHeaderTitle } from "@/contexts/headerTitle/useHeaderTitle.ts";
+import { CategoryCard } from "@/components/navigation/CategoryCard";
+import { NavigationDivider } from "@/components/navigation/NavigationDivider";
+import { useHeaderTitle } from "@/contexts/headerTitle/useHeaderTitle";
 import { useEffect } from "react";
 
-const Home = () => {
-  const navigate = useSmartNavigate();
-  const { setTitle } = useHeaderTitle();
+const icon = (Comp: typeof BoxIcon) => <Comp size={32} />;
 
-  useEffect(() => {
-    setTitle("Home");
-  }, [setTitle]);
+export default function Home() {
+  const { setTitle } = useHeaderTitle();
+  useEffect(() => setTitle("Home"), [setTitle]);
 
   return (
-    <div className="flex w-full flex-col gap-1">
-      <NavigationDivider label="Explore" />
-      <NavigationCard
-        icon={<BoxIcon />}
-        label="Sections"
-        onClick={() => navigate("/sections", "/")}
-      />
-      <NavigationCard
-        icon={<BlocksIcon />}
-        label="Components"
-        onClick={() => navigate("/components", "/")}
-      />
-      <NavigationCard
-        icon={<TypeIcon />}
-        label="Typography"
-        onClick={() => navigate("/typography", "/")}
-      />
-      <NavigationCard
-        icon={<PaletteIcon />}
-        label="Colors"
-        onClick={() => navigate("/colors", "/")}
-      />
-      <NavigationCard icon={<DatabaseIcon />} label="CMS" onClick={() => navigate("/cms", "/")} />
+    <div className="space-y-4 pb-24">
+      {/* ---------- Explore ---------- */}
+      <section>
+        <NavigationDivider label="Explore" />
+        <div className="grid grid-cols-2 gap-3.5 mt-2">
+          <CategoryCard label="Sections" href="/sections" icon={icon(BoxIcon)} />
+          <CategoryCard label="Components" href="/components" icon={icon(BlocksIcon)} />
+          <CategoryCard label="Typography" href="/typography" icon={icon(TypeIcon)} />
+          <CategoryCard label="Colors" href="/colors" icon={icon(PaletteIcon)} />
+          <CategoryCard label="CMS" href="/cms" icon={icon(DatabaseIcon)} />
+        </div>
+      </section>
 
-      <NavigationDivider label="Generate" />
-      <NavigationCard
-        icon={<FilePenIcon />}
-        label="Page AI"
-        onClick={() => navigate("/page-gen", "/")}
-      />
-      <NavigationCard
-        icon={<FileType2Icon />}
-        label="Context AI"
-        onClick={() => navigate("/typography-gen", "/")}
-      />
-      <NavigationCard
-        icon={<FileType2Icon />}
-        label="Context AI"
-        onClick={() => navigate("/typography-gen", "/")}
-      />
-      <NavigationCard
-        icon={<FileType2Icon />}
-        label="Context AI"
-        onClick={() => navigate("/typography-gen", "/")}
-      />
+      {/* ---------- Generate ---------- */}
+      <section>
+        <NavigationDivider label="Generate" />
+        <div className="grid grid-cols-2 gap-3.5 mt-2">
+          <CategoryCard label="Page AI" href="/page-gen" icon={icon(FilePenIcon)} />
+          <CategoryCard label="Context AI" href="/typography-gen" icon={icon(FileType2Icon)} />
+        </div>
+      </section>
     </div>
   );
-};
-
-export default Home;
+}

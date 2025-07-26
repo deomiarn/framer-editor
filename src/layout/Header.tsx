@@ -9,10 +9,10 @@ export function Header() {
         placeholder="Search…"
         className="
           w-full rounded-xl pl-9 py-5
-          bg-secondary backdrop-blur-2xl
-          border border-white/35
+          bg-white/30 backdrop-blur-2xl
+          border border-white/50
           placeholder:text-white/60
-          shadow-md
+          shadow-sm
           focus:outline-none
           focus:ring-2 focus:ring-primary/25 focus:border-primary/60
         "
